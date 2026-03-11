@@ -3,9 +3,7 @@
 describe('ifElse', () => {
   // const { ifElse } = require('./ifElse');
 
-  it('should ', () => {
-
-  });
+  it('should ', () => {});
 
   // write tests here
 });
