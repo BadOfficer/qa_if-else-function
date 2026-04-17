@@ -11,9 +11,13 @@ describe('ifElse', () => {
   });
 
   it('should return undefined', () => {
-    const result = ifElse(jest.fn(), jest.fn(), jest.fn());
+    const condCb = jest.fn();
+
+    const result = ifElse(condCb, jest.fn, jest.fn);
 
     expect(result).toBeUndefined();
+    expect(condCb).toHaveBeenCalledTimes(1);
+    expect(condCb).toHaveBeenCalledWith();
   });
 
   it('should run only first callback', () => {
@@ -23,6 +27,8 @@ describe('ifElse', () => {
 
     expect(firstCb).toHaveBeenCalledTimes(1);
     expect(secondCb).not.toHaveBeenCalled();
+    expect(condCb).toHaveBeenCalledTimes(1);
+    expect(condCb).toHaveBeenCalledWith();
   });
 
   it('should run second callback', () => {
@@ -32,5 +38,7 @@ describe('ifElse', () => {
 
     expect(secondCb).toHaveBeenCalledTimes(1);
     expect(firstCb).not.toHaveBeenCalled();
+    expect(condCb).toHaveBeenCalledTimes(1);
+    expect(condCb).toHaveBeenCalledWith();
   });
 });
