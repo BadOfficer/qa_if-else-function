@@ -13,7 +13,7 @@ describe('ifElse', () => {
   it('should return undefined', () => {
     const condCb = jest.fn();
 
-    const result = ifElse(condCb, jest.fn, jest.fn);
+    const result = ifElse(condCb, jest.fn(), jest.fn());
 
     expect(result).toBeUndefined();
     expect(condCb).toHaveBeenCalledTimes(1);
@@ -26,6 +26,7 @@ describe('ifElse', () => {
     ifElse(condCb, firstCb, secondCb);
 
     expect(firstCb).toHaveBeenCalledTimes(1);
+    expect(firstCb).toHaveBeenCalledWith();
     expect(secondCb).not.toHaveBeenCalled();
     expect(condCb).toHaveBeenCalledTimes(1);
     expect(condCb).toHaveBeenCalledWith();
@@ -37,6 +38,7 @@ describe('ifElse', () => {
     ifElse(condCb, firstCb, secondCb);
 
     expect(secondCb).toHaveBeenCalledTimes(1);
+    expect(secondCb).toHaveBeenCalledWith();
     expect(firstCb).not.toHaveBeenCalled();
     expect(condCb).toHaveBeenCalledTimes(1);
     expect(condCb).toHaveBeenCalledWith();
